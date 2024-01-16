@@ -1,4 +1,4 @@
-package com.emre.project.library.menu;
+package com.emre.project.library.menu.generic;
 
 import java.io.BufferedReader;
 import java.io.IOException;
