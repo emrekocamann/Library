@@ -42,11 +42,18 @@ public class Menu {
         return option.get();
         }
     }
-    public Menu execute(){
+    protected String printAndGet(String text){
+        print(text);
+        return ConsoleReader.readLine();
+    }
+    public MenuName execute(){
         printTitle();
         printOptions();
         MenuOption option = getOption();
-       return option.handler().handle();
+        if (option.handler() != null){
+            return option.handler().handle();
+        }
+       return option.menuName();
     }
 
     protected void setOptions(List<MenuOption> options) {

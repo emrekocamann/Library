@@ -1,8 +1,6 @@
 package com.emre.project.library.repo.user;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class UserRepository {
     private  final Map<Integer, SystemUser> users= new HashMap<>();
@@ -18,4 +16,35 @@ public class UserRepository {
         return users.values().stream()
                 .filter(u->u.getUsername().equals(username)&&u.getPassword().equals(password)).findFirst();
     }
+
+    public List<SystemUser> searchUsers(String searchTerm) {
+        return users.values().stream()
+                .filter(u->searchUser(u,searchTerm))
+                .toList();
+    }
+
+    private boolean searchUser(SystemUser user, String searchTerm) {
+        boolean found = findId(searchTerm,
+                user.getId().toString(),
+                user.getUsername());
+       if (user instanceof Customer customer){
+           return found || findId(searchTerm,
+                   customer.getAddress(),
+                   customer.getPostcode(),
+                   customer.getCity(),
+                   customer.getEmail(),
+                   customer.getFirstname(),
+                   customer.getLastname());
+       }else {
+           return false;
+       }
+
+    }
+
+    private boolean findId(String searchTerm, String ... values){
+        return Arrays.stream(values)
+                .anyMatch(s -> s.contains(searchTerm));
+
+    }
+
 }
