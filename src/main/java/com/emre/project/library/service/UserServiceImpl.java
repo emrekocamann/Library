@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+
     @Override
     public Optional<SystemUser> getByUsernameAndPassword(String username, String password) {
         return userRepository.getByUsernameAndPassword(username, password);
@@ -48,4 +49,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Only admin roles can search user");
         }
     }
+    @Override
+    public Optional<Customer> getById(Integer userId) {
+        return userRepository.getById(userId)
+                .map(systemUser -> (Customer) systemUser);
+    }
+
 }

@@ -3,12 +3,12 @@ package com.emre.project.library.menu.admin.user;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.repo.user.Customer;
-import com.emre.project.library.repo.user.SystemUser;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
 
 import java.util.List;
-import java.util.Optional;
+
+import static com.emre.project.library.menu.admin.user.ViewUsersMenu.USER_ID;
 
 public class SearchUsersMenu extends Menu {
     public SearchUsersMenu(UserService userService) {
@@ -30,9 +30,19 @@ public class SearchUsersMenu extends Menu {
               System.out.printf("%-5.5s|%-20.20s|%-20.20s|%-10.10s%-15.15s %n",
                       c.getId(),c.getFirstname(),c.getLastname(),c.getAddress(),c.getCity());
           }
-          return execute();
+            String choice=  printAndGet("Enter user ID to see or 'X' to go back to main menu:");
+          if ("X".equals(choice)){
+              return MenuName.ADMIN_MAIN_MENU;
+          }else {
+              boolean isExists=    customers.stream().anyMatch(c->c.getId().toString().equals(choice));
 
-
+              if (isExists){
+                  SystemContext.addProperty(USER_ID,choice);
+                  return MenuName.ADMIN_VIEW_USER;
+              }else {
+                  return execute();
+              }
+          }
       }
 
     }

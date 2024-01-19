@@ -5,11 +5,20 @@ import com.emre.project.library.repo.user.AdminUser;
 import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.repo.user.SystemUser;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 public final class SystemContext {
     private static Integer loggedInUserId;
     private static boolean isAdmin = false;
+    private static final Map<String,String> properties = new HashMap<>();
+    public static void addProperty(String name,String velue){
+        properties.put(name,velue);
+    }
+    public static String getProperty(String name){
+        return properties.get(name);
+    }
 
     public static boolean isLoggedInUserAdmin(){
         return isAdmin;

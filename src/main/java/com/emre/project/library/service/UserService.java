@@ -12,4 +12,6 @@ public interface UserService {
     void deleteUserByUserId(Integer userId);
 
     List<Customer> searchUsers(String searchTerm);
+
+    Optional<Customer> getById(Integer userId);
 }

@@ -12,6 +12,10 @@ public class UserRepository {
         users.remove(id);
     }
 
+    public Optional<SystemUser> getById(Integer userId) {
+        return Optional.ofNullable(users.get(userId));
+    }
+
     public Optional<SystemUser> getByUsernameAndPassword(String username, String password) {
         return users.values().stream()
                 .filter(u->u.getUsername().equals(username)&&u.getPassword().equals(password)).findFirst();

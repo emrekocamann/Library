@@ -1,6 +1,8 @@
 package com.emre.project.library;
 
+import com.emre.project.library.menu.admin.AdminMainMenu;
 import com.emre.project.library.menu.admin.user.SearchUsersMenu;
+import com.emre.project.library.menu.admin.user.ViewUsersMenu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.login.AdminLoginMenu;
 import com.emre.project.library.menu.login.MainLoginMenu;
@@ -20,9 +22,11 @@ public class LibraryApp {
         createDummyUsers(userRepository);
         UserService userService = new UserServiceImpl(userRepository);
         UserLoginMenu userLoginMenu = new UserLoginMenu(userService);
+        AdminMainMenu adminMainMenuMenu = new AdminMainMenu();
         Menu mainLoginMenu = new MainLoginMenu();
         SearchUsersMenu  searchUsersMenu = new SearchUsersMenu(userService);
         AdminLoginMenu adminLoginMenu = new AdminLoginMenu(userService);
+        ViewUsersMenu viewUsersMenu = new ViewUsersMenu(userService);
 
         MenuName menuName =MenuName.MAIN_LOGIN;
 
@@ -30,7 +34,9 @@ public class LibraryApp {
          menuName =   switch (menuName){
              case  USER_LOGIN -> userLoginMenu.execute();
              case  ADMIN_LOGIN -> adminLoginMenu.execute();
+             case ADMIN_MAIN_MENU ->adminMainMenuMenu.execute();
              case SEARCH_USERS -> searchUsersMenu.execute();
+             case ADMIN_VIEW_USER -> viewUsersMenu.execute();
                 default -> mainLoginMenu.execute();
             };
         }

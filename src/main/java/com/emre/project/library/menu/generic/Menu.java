@@ -49,11 +49,14 @@ public class Menu {
     public MenuName execute(){
         printTitle();
         printOptions();
+        return run();
+    }
+    protected MenuName run(){
         MenuOption option = getOption();
         if (option.handler() != null){
             return option.handler().handle();
         }
-       return option.menuName();
+        return option.menuName();
     }
 
     protected void setOptions(List<MenuOption> options) {
