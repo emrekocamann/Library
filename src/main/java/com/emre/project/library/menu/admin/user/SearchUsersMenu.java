@@ -25,7 +25,7 @@ public class SearchUsersMenu extends Menu {
           println("No user found, please try again");
           return execute();
       }else {
-          System.out.printf("%-5s|%-20s|%-20s|%-10s%-15s %n","ID","Name","Address","Postcode","City");
+          System.out.printf("%-5s|%-20s|%-20s|%-10s|%-15s %n","ID","Name","Address","Postcode","City");
           for (Customer c: customers){
               System.out.printf("%-5.5s|%-20.20s|%-20.20s|%-10.10s%-15.15s %n",
                       c.getId(),c.getFirstname(),c.getLastname(),c.getAddress(),c.getCity());

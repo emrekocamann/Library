@@ -48,4 +48,8 @@ public final class SystemContext {
         loggedInUserId = null;
         isAdmin = false;
     }
+
+    public static void removeProperty(String key) {
+        properties.remove(key);
+    }
 }

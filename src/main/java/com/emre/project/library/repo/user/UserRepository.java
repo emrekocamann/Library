@@ -51,4 +51,7 @@ public class UserRepository {
 
     }
 
+    public void updateUser(Customer updatedCustomer) {
+        users.put(updatedCustomer.getId(),updatedCustomer);
+    }
 }

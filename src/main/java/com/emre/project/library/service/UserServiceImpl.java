@@ -13,6 +13,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final MailService mailService;
 
 
     @Override
@@ -53,6 +54,12 @@ public class UserServiceImpl implements UserService {
     public Optional<Customer> getById(Integer userId) {
         return userRepository.getById(userId)
                 .map(systemUser -> (Customer) systemUser);
+    }
+
+    @Override
+    public void updateUser(Customer updatedCustomer) {
+        userRepository.updateUser(updatedCustomer);
+        mailService.sendUserUpdatedMail(updatedCustomer);
     }
 
 }

@@ -14,4 +14,6 @@ public interface UserService {
     List<Customer> searchUsers(String searchTerm);
 
     Optional<Customer> getById(Integer userId);
+
+    void updateUser(Customer updatedCustomer);
 }
