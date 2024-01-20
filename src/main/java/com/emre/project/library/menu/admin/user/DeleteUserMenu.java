@@ -31,16 +31,4 @@ public class DeleteUserMenu extends Menu {
         ConsoleReader.readLine();
         return MenuName.ADMIN_MAIN_MENU;
       }
-
-
-    private String printfAndGet(String label,String value){
-        System.out.printf("%-13s: %s -> New value: ", label, value);
-        String input=  ConsoleReader.readLine();
-
-        if (input == null||input.trim().equals("")){
-            return value;
-        }else {
-            return input;
-        }
-    }
 }

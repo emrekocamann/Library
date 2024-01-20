@@ -6,7 +6,24 @@ public class UserRepository {
     private  final Map<Integer, SystemUser> users= new HashMap<>();
 
     public void createUser(SystemUser user){
-        users.put(user.getId(), user);
+        Integer maxId = users.keySet().stream().max(Comparator.naturalOrder()).orElse(1);
+        Integer newId= maxId+1;
+        SystemUser newUser =  switch (user){
+             case AdminUser a -> new AdminUser(newId, a.getUsername(), a.getPassword());
+             case Customer c -> new Customer(newId,
+                 c.getUsername(),
+                 c.getPassword(),
+                 c.getFirstname(),
+                 c.getLastname(),
+                 c.getAddress(),
+                 c.getPostcode(),
+                 c.getCity(),
+                 c.getEmail()
+         );
+         default -> throw new RuntimeException("Only customer users and admin may be created");
+        };
+
+        users.put(newId, newUser);
     }
     public void deleteUserById(Integer id){
         users.remove(id);

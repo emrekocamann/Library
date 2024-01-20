@@ -1,10 +1,7 @@
 package com.emre.project.library;
 
 import com.emre.project.library.menu.admin.AdminMainMenu;
-import com.emre.project.library.menu.admin.user.DeleteUserMenu;
-import com.emre.project.library.menu.admin.user.EditUserMenu;
-import com.emre.project.library.menu.admin.user.SearchUsersMenu;
-import com.emre.project.library.menu.admin.user.ViewUsersMenu;
+import com.emre.project.library.menu.admin.user.*;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.login.AdminLoginMenu;
 import com.emre.project.library.menu.login.MainLoginMenu;
@@ -34,6 +31,7 @@ public class LibraryApp {
         ViewUsersMenu viewUsersMenu = new ViewUsersMenu(userService);
         EditUserMenu editUserMenu = new EditUserMenu(userService);
         DeleteUserMenu deleteUserMenu = new DeleteUserMenu(userService);
+        CreateUserMenu createUserMenu = new CreateUserMenu(userService);
 
         MenuName menuName =MenuName.MAIN_LOGIN;
 
@@ -46,6 +44,7 @@ public class LibraryApp {
              case ADMIN_VIEW_USER -> viewUsersMenu.execute();
              case ADMIN_EDIT_USER -> editUserMenu.execute();
              case ADMIN_DELETE_USER ->deleteUserMenu.execute();
+             case ADMIN_CREATE_USER ->createUserMenu.execute();
                 default -> mainLoginMenu.execute();
             };
         }

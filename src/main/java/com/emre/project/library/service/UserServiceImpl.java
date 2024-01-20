@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
     public void createUser(SystemUser user) {
         if (SystemContext.isLoggedInUserAdmin()){
             userRepository.createUser(user);
+            mailService.sendUserCreatedMail(user);
         }else {
             throw new RuntimeException("Only admin roles can create a new user");
         }

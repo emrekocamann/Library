@@ -1,5 +1,6 @@
 package com.emre.project.library.menu.generic;
 
+import com.emre.project.library.service.BookService;
 import com.emre.project.library.service.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ public class Menu {
     private final String title;
     private List<MenuOption> options;
     private UserService userService;
+    private BookService bookService;
     public Menu(String title) {
         this.title = title;
     }
@@ -16,6 +18,11 @@ public class Menu {
         this.title = title;
         this.userService = userService;
     }
+    public Menu(String title, BookService bookService) {
+        this.title = title;
+        this.bookService = bookService;
+    }
+
 
     protected void printTitle(){
         System.out.println();
@@ -66,6 +73,11 @@ public class Menu {
     protected UserService getUserService() {
         return userService;
     }
+
+    protected BookService getBookService() {
+        return bookService;
+    }
+
     protected void print(String text){
         System.out.print(text);
     }
