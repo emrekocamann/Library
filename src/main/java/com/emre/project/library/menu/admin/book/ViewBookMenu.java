@@ -39,9 +39,4 @@ public class ViewBookMenu extends Menu {
 
         return run();
       }
-
-
-    private void printfItem(String label,String value){
-        System.out.printf("%-8s: %s %n", label, value);
-    }
 }

@@ -1,4 +1,4 @@
-package com.emre.project.library.menu.admin;
+package com.emre.project.library.menu.customer.profile;
 
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
@@ -6,18 +6,17 @@ import com.emre.project.library.menu.generic.MenuOption;
 
 import java.util.List;
 
-public class AdminMainMenu extends Menu {
+public class MyProfileMenu extends Menu {
 
 
-    public AdminMainMenu() {
-        super("Admin Main Menu");
+    public MyProfileMenu() {
+        super("My Profile Menu");
 
         setOptions(List.of(
-                new MenuOption("S","Search users", MenuName.SEARCH_USERS),
-                new MenuOption("C","Create user",MenuName.ADMIN_CREATE_USER),
-                new MenuOption("B","Search books",MenuName.ADMIN_SEARCH_BOOKS),
-                new MenuOption("K","Create book", MenuName.ADMIN_CREATE_BOOK),
-                new MenuOption("O","Log off",MenuName.LOG_OFF)));
+                new MenuOption("U","Update my Profile", MenuName.UPDATE_MY_PROFILE),
+                new MenuOption("S","See my Profile",MenuName.SEE_MY_PROFILE),
+                new MenuOption("M","Return to Main",MenuName.USER_MAIN_MENU)));
+
     }
 //    private Menu handleUserLogin(){
 //        System.out.println("User login start");

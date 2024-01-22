@@ -87,4 +87,17 @@ public class Menu {
     protected void error(String text){
         System.err.println(text);
     }
+    protected String printfAndGet(String label,String value){
+        System.out.printf("%-13s: %s -> New value: ", label, value);
+        String input=  ConsoleReader.readLine();
+
+        if (input == null||input.trim().equals("")){
+            return value;
+        }else {
+            return input;
+        }
+    }
+    protected void printfItem(String label,String value){
+        System.out.printf("%-13s: %s %n", label, value);
+    }
 }

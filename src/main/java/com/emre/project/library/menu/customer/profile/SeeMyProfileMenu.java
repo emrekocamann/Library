@@ -1,5 +1,6 @@
-package com.emre.project.library.menu.admin.user;
+package com.emre.project.library.menu.customer.profile;
 
+import com.emre.project.library.menu.generic.ConsoleReader;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.generic.MenuOption;
@@ -10,23 +11,23 @@ import com.emre.project.library.system.SystemContext;
 import java.util.List;
 import java.util.Optional;
 
-public class ViewUsersMenu extends Menu {
+public class SeeMyProfileMenu extends Menu {
     public static final String USER_ID="USER_ID";
-    public ViewUsersMenu(UserService userService) {
-        super("View Users", userService);
+    public SeeMyProfileMenu(UserService userService) {
+        super("Update my Profile", userService);
         setOptions(List.of(
-                new MenuOption("E","Edit user", MenuName.ADMIN_EDIT_USER),
-                new MenuOption("D","Delete user",MenuName.ADMIN_DELETE_USER),
-                new MenuOption("M","Back to main menu",MenuName.ADMIN_MAIN_MENU)));
+                new MenuOption("U","Update my Profile", MenuName.UPDATE_MY_PROFILE),
+                new MenuOption("R","Return to My Profile",MenuName.MY_PROFILE)));
     }
 
 
     @Override
     public MenuName execute() {
         printTitle();
-        String userId = SystemContext.getProperty(USER_ID);
-        Optional<Customer> customerOptional = getUserService().getById(Integer.valueOf(userId));
+        Integer userId = SystemContext.getLoggedInUserId();
+        Optional<Customer> customerOptional = getUserService().getById(userId);
         Customer customer =customerOptional.orElseThrow();
+
 
         printfItem("ID",customer.getId().toString());
         printfItem("Username",customer.getUsername());

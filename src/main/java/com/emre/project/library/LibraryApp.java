@@ -1,37 +1,59 @@
 package com.emre.project.library;
 
 import com.emre.project.library.menu.admin.AdminMainMenu;
+import com.emre.project.library.menu.admin.book.*;
 import com.emre.project.library.menu.admin.user.*;
+import com.emre.project.library.menu.customer.UserMainMenu;
+import com.emre.project.library.menu.customer.profile.MyProfileMenu;
+import com.emre.project.library.menu.customer.profile.SeeMyProfileMenu;
+import com.emre.project.library.menu.customer.profile.UpdateMyProfileMenu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.login.AdminLoginMenu;
 import com.emre.project.library.menu.login.MainLoginMenu;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.login.UserLoginMenu;
+import com.emre.project.library.repo.book.BookRepository;
 import com.emre.project.library.repo.user.AdminUser;
 import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.repo.user.UserRepository;
-import com.emre.project.library.service.MailService;
-import com.emre.project.library.service.MailServiceImpl;
-import com.emre.project.library.service.UserService;
-import com.emre.project.library.service.UserServiceImpl;
+import com.emre.project.library.service.*;
 
 public class LibraryApp {
 
     public static void main(String[] args)  {
 
         UserRepository userRepository = new UserRepository();
+        BookRepository bookRepository = new BookRepository();
         createDummyUsers(userRepository);
         MailService mailService = new MailServiceImpl();
         UserService userService = new UserServiceImpl(userRepository,mailService);
+        BookService bookService = new BookServiceImpl(bookRepository);
+
+        Menu mainLoginMenu = new MainLoginMenu();
         UserLoginMenu userLoginMenu = new UserLoginMenu(userService);
         AdminMainMenu adminMainMenuMenu = new AdminMainMenu();
-        Menu mainLoginMenu = new MainLoginMenu();
-        SearchUsersMenu  searchUsersMenu = new SearchUsersMenu(userService);
         AdminLoginMenu adminLoginMenu = new AdminLoginMenu(userService);
+
+        SearchUsersMenu  searchUsersMenu = new SearchUsersMenu(userService);
         ViewUsersMenu viewUsersMenu = new ViewUsersMenu(userService);
         EditUserMenu editUserMenu = new EditUserMenu(userService);
         DeleteUserMenu deleteUserMenu = new DeleteUserMenu(userService);
         CreateUserMenu createUserMenu = new CreateUserMenu(userService);
+
+        // -- book menus
+        SearchBookMenu searchBookMenu = new SearchBookMenu(bookService);
+        ViewBookMenu viewBookMenu = new ViewBookMenu(bookService);
+        EditBookMenu editBookMenu = new EditBookMenu(bookService);
+        DeleteBookMenu deleteBookMenu = new DeleteBookMenu(bookService);
+        CreateBookMenu createBookMenu = new CreateBookMenu(bookService);
+
+        // -- user menus
+        UserMainMenu userMainMenu = new UserMainMenu();
+        MyProfileMenu myProfileMenu = new MyProfileMenu();
+        UpdateMyProfileMenu updateMyProfileMenu = new UpdateMyProfileMenu(userService);
+        SeeMyProfileMenu seeMyProfileMenu = new SeeMyProfileMenu(userService);
+
+
 
         MenuName menuName =MenuName.MAIN_LOGIN;
 
@@ -45,6 +67,15 @@ public class LibraryApp {
              case ADMIN_EDIT_USER -> editUserMenu.execute();
              case ADMIN_DELETE_USER ->deleteUserMenu.execute();
              case ADMIN_CREATE_USER ->createUserMenu.execute();
+             case ADMIN_SEARCH_BOOKS -> searchBookMenu.execute();
+             case ADMIN_VIEW_BOOK-> viewBookMenu.execute();
+             case ADMIN_EDIT_BOOK->editBookMenu.execute();
+             case ADMIN_CREATE_BOOK->createBookMenu.execute();
+             case ADMIN_DELETE_BOOK->deleteBookMenu.execute();
+             case USER_MAIN_MENU -> userMainMenu.execute();
+             case MY_PROFILE -> myProfileMenu.execute();
+             case UPDATE_MY_PROFILE -> updateMyProfileMenu.execute();
+             case SEE_MY_PROFILE -> seeMyProfileMenu.execute();
                 default -> mainLoginMenu.execute();
             };
         }
