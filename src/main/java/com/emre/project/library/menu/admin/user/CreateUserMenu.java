@@ -15,11 +15,9 @@ public class CreateUserMenu extends Menu {
         super("Create User", userService);
     }
 
-
     @Override
     public MenuName execute() {
         printTitle();
-
 
        String username = printAndGet("Username: ");
        String password = printAndGet("Password: ");

@@ -10,7 +10,7 @@ public class BookRepository {
     public void createBook(Book newBook){
         Integer maxId = books.keySet().stream().max(Comparator.naturalOrder()).orElse(1);
         Integer newId= maxId+1;
-        Book book =  new Book(newId,newBook.title(),newBook.year(), newBook.author());
+        Book book =  new Book(newId,newBook.getTitle(),newBook.getYear(), newBook.getAuthor());
         books.put(newId, book);
     }
     public void deleteUserById(Integer id){
@@ -21,8 +21,6 @@ public class BookRepository {
         return Optional.ofNullable(books.get(userId));
     }
 
-
-
     public List<Book> searchBooks(String searchTerm) {
         return books.values().stream()
                 .filter(u->searchBook(u,searchTerm))
@@ -32,20 +30,23 @@ public class BookRepository {
     private boolean searchBook(Book book, String searchTerm) {
 
            return  findId(searchTerm,
-                   book.id(),
-                   book.title(),
-                   book.year(),
-                   book.author()
+                   book.getId(),
+                   book.getTitle(),
+                   book.getYear(),
+                   book.getAuthor()
                  );
     }
 
     private boolean findId(String searchTerm, Object ... values){
         return Arrays.stream(values)
                 .anyMatch(s -> s.toString().contains(searchTerm));
-
     }
 
     public void updateBook(Book book) {
-        books.put(book.id(),book);
+        books.put(book.getId(),book);
+    }
+
+    public List<Book> searchBooksBorrowedByUserId(Integer loggedInUserId) {
+        return  books.values().stream().filter(book -> Objects.equals(book.getBorrowedBy(),loggedInUserId)).toList();
     }
 }

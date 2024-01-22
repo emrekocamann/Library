@@ -23,7 +23,6 @@ public class DeleteUserMenu extends Menu {
         Optional<Customer> customerOptional = getUserService().getById(Integer.valueOf(userId));
         Customer customer =customerOptional.orElseThrow();
 
-
         getUserService().deleteUserByUserId(customer.getId());
         System.out.printf("User %s is successfully deleted. %n",customer.getId());
         SystemContext.removeProperty(USER_ID);

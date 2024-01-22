@@ -19,8 +19,6 @@ public class ViewBookMenu extends Menu {
                 new MenuOption("D","Delete Book",MenuName.ADMIN_DELETE_BOOK),
                 new MenuOption("M","Back to main menu",MenuName.ADMIN_MAIN_MENU)));
     }
-
-
     @Override
     public MenuName execute() {
         printTitle();
@@ -28,11 +26,10 @@ public class ViewBookMenu extends Menu {
         Optional<Book> BookOptional = getBookService().getById(Integer.valueOf(BookId));
         Book book =BookOptional.orElseThrow();
 
-        printfItem("ID",book.id().toString());
-        printfItem("Title",book.title());
-        printfItem("Year",book.year().toString());
-        printfItem("Author",book.author());
-
+        printfItem("ID",book.getId().toString());
+        printfItem("Title",book.getTitle());
+        printfItem("Year",book.getYear().toString());
+        printfItem("Author",book.getAuthor());
 
         System.out.println();
         printOptions();

@@ -30,11 +30,9 @@ public class Menu {
     }
     public void printOptions(){
         for (MenuOption option : options) {
-//            System.out.println("("+option.choice()+") - "+option.title());
             System.out.printf("(%s) - %s %n", option.choice(),option.title());
         }
         println("----------------------------------");
-
         print("Enter your choice:");
     }
     protected MenuOption getOption(){

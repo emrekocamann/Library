@@ -20,7 +20,6 @@ public class CreateBookMenu extends Menu {
     public MenuName execute() {
         printTitle();
 
-
         String title = printAndGet("Title");
         Integer year  = Integer.valueOf(printAndGet("Year"));
         String author  = printAndGet("Author");

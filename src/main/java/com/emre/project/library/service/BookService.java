@@ -15,4 +15,6 @@ public interface BookService {
     Optional<Book> getById(Integer bookId);
 
     void updateBook(Book updatedBook);
+
+    List<Book> searchBooksBorrowedByUserId(Integer loggedInUserId);
 }

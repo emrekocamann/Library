@@ -27,15 +27,13 @@ public class EditBookMenu extends Menu {
         Optional<Book> bookOptional = getBookService().getById(Integer.valueOf(BookId));
         Book book =bookOptional.orElseThrow();
 
+        String title = printfAndGet("Title",book.getTitle());
+        Integer year  = Integer.valueOf(printfAndGet("Year",book.getYear().toString()));
+        String author  = printfAndGet("Author",book.getAuthor());
 
-       String title = printfAndGet("Title",book.title());
-       Integer year  = Integer.valueOf(printfAndGet("Year",book.year().toString()));
-       String author  = printfAndGet("Author",book.author());
+        Book updatedBook = new Book(book.getId(), title, year, author);
 
-
-       Book updatedBook = new Book(book.id(), title, year, author);
-
-       getBookService().updateBook(updatedBook);
+        getBookService().updateBook(updatedBook);
         System.out.println();
         SystemContext.removeProperty(BOOK_ID);
         println("Book is successfully updated");

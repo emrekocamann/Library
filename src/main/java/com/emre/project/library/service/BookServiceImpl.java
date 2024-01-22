@@ -34,4 +34,7 @@ public class BookServiceImpl implements BookService {
     public void updateBook(Book updatedBook) {
         bookRepository.updateBook(updatedBook);
     }
+    public List<Book> searchBooksBorrowedByUserId(Integer loggedInUserId){
+        return bookRepository.searchBooksBorrowedByUserId(loggedInUserId);
+    }
 }

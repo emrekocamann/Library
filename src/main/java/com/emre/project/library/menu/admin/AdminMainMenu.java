@@ -11,24 +11,11 @@ public class AdminMainMenu extends Menu {
 
     public AdminMainMenu() {
         super("Admin Main Menu");
-
         setOptions(List.of(
                 new MenuOption("S","Search users", MenuName.SEARCH_USERS),
                 new MenuOption("C","Create user",MenuName.ADMIN_CREATE_USER),
                 new MenuOption("B","Search books",MenuName.ADMIN_SEARCH_BOOKS),
                 new MenuOption("K","Create book", MenuName.ADMIN_CREATE_BOOK),
                 new MenuOption("O","Log off",MenuName.LOG_OFF)));
-    }
-//    private Menu handleUserLogin(){
-//        System.out.println("User login start");
-//        return userLoginMenu;
-//    }
-    private Menu handleAdminLogin(){
-        System.out.println("Admin handler");
-        return this;
-    }
-    private Menu exit(){
-        System.exit(1);
-        return null;
     }
 }

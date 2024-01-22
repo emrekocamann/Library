@@ -27,8 +27,8 @@ public class DeleteBookMenu extends Menu {
         Book book =BookOptional.orElseThrow();
 
 
-        getBookService().deleteBookByBookId(book.id());
-        System.out.printf("Book %s is successfully deleted. %n",book.id());
+        getBookService().deleteBookByBookId(book.getId());
+        System.out.printf("Book %s is successfully deleted. %n",book.getId());
         SystemContext.removeProperty(BOOK_ID);
         println("Press ENTER to continue");
         ConsoleReader.readLine();

@@ -7,8 +7,6 @@ import com.emre.project.library.menu.generic.MenuOption;
 import java.util.List;
 
 public class MainLoginMenu extends Menu {
-
-    private UserLoginMenu userLoginMenu;
     public MainLoginMenu() {
         super("Login Menu");
         setOptions(List.of(

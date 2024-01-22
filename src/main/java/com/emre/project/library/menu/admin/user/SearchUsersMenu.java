@@ -25,13 +25,13 @@ public class SearchUsersMenu extends Menu {
           println("No user found, please try again");
           return execute();
       }else {
-          System.out.printf("%-5s|%-20s|%-20s|%-10s|%-15s %n","ID","Name","Address","Postcode","City");
+          System.out.printf("%-5s|%-20s|%-20s|%-10s|%-15s| %n","ID","Name","Address","Postcode","City");
           for (Customer c: customers){
-              System.out.printf("%-5.5s|%-20.20s|%-20.20s|%-10.10s%-15.15s %n",
-                      c.getId(),c.getFirstname(),c.getLastname(),c.getAddress(),c.getCity());
+              System.out.printf("%-5.5s|%-20.20s|%-20.20s|%-10.10s|%-15.15s %n",
+                      c.getId(),c.getFirstname()+" "+c.getLastname(),c.getAddress(),c.getPostcode(),c.getCity());
           }
             String choice=  printAndGet("Enter user ID to see or 'X' to go back to main menu:");
-          if ("X".equals(choice)){
+          if ("X".equalsIgnoreCase(choice)){
               return MenuName.ADMIN_MAIN_MENU;
           }else {
               boolean isExists=    customers.stream().anyMatch(c->c.getId().toString().equals(choice));

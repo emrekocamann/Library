@@ -4,6 +4,8 @@ import com.emre.project.library.menu.admin.AdminMainMenu;
 import com.emre.project.library.menu.admin.book.*;
 import com.emre.project.library.menu.admin.user.*;
 import com.emre.project.library.menu.customer.UserMainMenu;
+import com.emre.project.library.menu.customer.book.BorrowBooksMenu;
+import com.emre.project.library.menu.customer.book.ReturnBooksMenu;
 import com.emre.project.library.menu.customer.profile.MyProfileMenu;
 import com.emre.project.library.menu.customer.profile.SeeMyProfileMenu;
 import com.emre.project.library.menu.customer.profile.UpdateMyProfileMenu;
@@ -12,6 +14,7 @@ import com.emre.project.library.menu.login.AdminLoginMenu;
 import com.emre.project.library.menu.login.MainLoginMenu;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.login.UserLoginMenu;
+import com.emre.project.library.repo.book.Book;
 import com.emre.project.library.repo.book.BookRepository;
 import com.emre.project.library.repo.user.AdminUser;
 import com.emre.project.library.repo.user.Customer;
@@ -25,6 +28,7 @@ public class LibraryApp {
         UserRepository userRepository = new UserRepository();
         BookRepository bookRepository = new BookRepository();
         createDummyUsers(userRepository);
+        createDummyBooks(bookRepository);
         MailService mailService = new MailServiceImpl();
         UserService userService = new UserServiceImpl(userRepository,mailService);
         BookService bookService = new BookServiceImpl(bookRepository);
@@ -53,6 +57,8 @@ public class LibraryApp {
         UpdateMyProfileMenu updateMyProfileMenu = new UpdateMyProfileMenu(userService);
         SeeMyProfileMenu seeMyProfileMenu = new SeeMyProfileMenu(userService);
 
+        BorrowBooksMenu borrowBooksMenu = new BorrowBooksMenu(bookService);
+        ReturnBooksMenu returnBooksMenu = new ReturnBooksMenu(bookService);
 
 
         MenuName menuName =MenuName.MAIN_LOGIN;
@@ -76,6 +82,8 @@ public class LibraryApp {
              case MY_PROFILE -> myProfileMenu.execute();
              case UPDATE_MY_PROFILE -> updateMyProfileMenu.execute();
              case SEE_MY_PROFILE -> seeMyProfileMenu.execute();
+             case BORROW_BOOK -> borrowBooksMenu.execute();
+             case RETURN_BOOK -> returnBooksMenu.execute();
                 default -> mainLoginMenu.execute();
             };
         }
@@ -93,5 +101,10 @@ public class LibraryApp {
                         "15400","Denizli","admin@test.com"));
         userRepository.createUser(
                 new AdminUser(1001,"admin1","123456"));
+    }
+
+    private static void createDummyBooks(BookRepository bookRepository){
+        bookRepository.createBook(new Book(1,"Alice's Adventures in Wonderland",1865,"Lewis Carroll"));
+        bookRepository.createBook(new Book(2,"Through the Looking-Glass",1871,"Lewis Carroll"));
     }
 }
