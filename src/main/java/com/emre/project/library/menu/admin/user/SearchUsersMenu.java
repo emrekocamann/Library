@@ -5,9 +5,7 @@ import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
-
 import java.util.List;
-
 import static com.emre.project.library.menu.admin.user.ViewUsersMenu.USER_ID;
 
 public class SearchUsersMenu extends Menu {

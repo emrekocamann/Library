@@ -5,8 +5,6 @@ import com.emre.project.library.menu.generic.UserMenu;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
 
-import java.util.Optional;
-
 public class UpdateMyProfileMenu extends UserMenu {
     public static final String USER_ID="USER_ID";
     public UpdateMyProfileMenu(UserService userService) {

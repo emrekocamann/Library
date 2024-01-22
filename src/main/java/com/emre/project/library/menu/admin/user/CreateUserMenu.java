@@ -7,8 +7,6 @@ import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
 
-import java.util.Optional;
-
 public class CreateUserMenu extends Menu {
     public static final String USER_ID="USER_ID";
     public CreateUserMenu(UserService userService) {

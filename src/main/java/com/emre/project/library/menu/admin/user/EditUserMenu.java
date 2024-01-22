@@ -1,14 +1,9 @@
 package com.emre.project.library.menu.admin.user;
 
-import com.emre.project.library.menu.generic.ConsoleReader;
-import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.generic.UserMenu;
-import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
-
-import java.util.Optional;
 
 public class EditUserMenu extends UserMenu {
     public static final String USER_ID="USER_ID";

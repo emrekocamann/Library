@@ -1,13 +1,9 @@
 package com.emre.project.library.menu.customer.profile;
 
 import com.emre.project.library.menu.generic.*;
-import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
-
 import java.util.List;
-import java.util.Optional;
-
 public class SeeMyProfileMenu extends UserMenu {
     public static final String USER_ID="USER_ID";
     public SeeMyProfileMenu(UserService userService) {

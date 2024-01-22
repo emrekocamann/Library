@@ -1,6 +1,5 @@
 package com.emre.project.library.service;
 
-import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.repo.user.SystemUser;
 
 public interface MailService {

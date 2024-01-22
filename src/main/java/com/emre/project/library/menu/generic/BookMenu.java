@@ -4,7 +4,6 @@ import com.emre.project.library.repo.book.Book;
 import com.emre.project.library.service.BookService;
 
 import java.util.List;
-
 public class BookMenu extends Menu{
     public BookMenu(String title, BookService bookService) {
         super(title, bookService);

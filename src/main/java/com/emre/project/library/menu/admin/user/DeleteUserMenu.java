@@ -6,7 +6,6 @@ import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
-
 import java.util.Optional;
 
 public class DeleteUserMenu extends Menu {

@@ -1,13 +1,11 @@
 package com.emre.project.library.menu.login;
 
-import com.emre.project.library.menu.generic.ConsoleReader;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.repo.user.AdminUser;
 import com.emre.project.library.repo.user.SystemUser;
 import com.emre.project.library.service.UserService;
 import com.emre.project.library.system.SystemContext;
-
 import java.util.Optional;
 
 public class AdminLoginMenu extends Menu {

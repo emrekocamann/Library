@@ -2,10 +2,7 @@ package com.emre.project.library.menu.generic;
 
 import com.emre.project.library.repo.user.Customer;
 import com.emre.project.library.service.UserService;
-import com.emre.project.library.system.SystemContext;
-
 import java.util.Optional;
-
 public class UserMenu extends Menu{
 
     public UserMenu(String title, UserService userService) {

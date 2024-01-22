@@ -3,7 +3,6 @@ package com.emre.project.library.menu.customer;
 import com.emre.project.library.menu.generic.Menu;
 import com.emre.project.library.menu.generic.MenuName;
 import com.emre.project.library.menu.generic.MenuOption;
-
 import java.util.List;
 
 public class UserMainMenu extends Menu {
